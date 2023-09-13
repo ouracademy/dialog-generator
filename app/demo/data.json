@@ -1,0 +1,55 @@
+{
+  "nodes": [
+    {
+      "width": 150,
+      "height": 40,
+      "id": "INICIO",
+      "type": "input",
+      "data": { "label": "INICIO" },
+      "position": { "x": 173, "y": -79 },
+      "selected": false,
+      "positionAbsolute": { "x": 173, "y": -79 },
+      "dragging": false
+    },
+    {
+      "width": 150,
+      "height": 40,
+      "id": "dndnode_0",
+      "type": "default",
+      "position": { "x": 231.5086669921875, "y": 9.012149810791016 },
+      "data": { "label": "default node" },
+      "positionAbsolute": { "x": 231.5086669921875, "y": 9.012149810791016 }
+    },
+    {
+      "width": 150,
+      "height": 40,
+      "id": "dndnode_1",
+      "type": "output",
+      "position": { "x": 272.0086669921875, "y": 88.51214981079102 },
+      "data": { "label": "output node" },
+      "positionAbsolute": { "x": 272.0086669921875, "y": 88.51214981079102 }
+    }
+  ],
+  "edges": [
+    {
+      "source": "INICIO",
+      "sourceHandle": null,
+      "target": "dndnode_0",
+      "targetHandle": null,
+      "type": "buttonedge",
+      "data": { "condition": "sdfsdfdf" },
+      "id": "reactflow__edge-INICIO-dndnode_0",
+      "selected": false
+    },
+    {
+      "source": "dndnode_0",
+      "sourceHandle": null,
+      "target": "dndnode_1",
+      "targetHandle": null,
+      "type": "buttonedge",
+      "data": { "condition": "" },
+      "id": "reactflow__edge-dndnode_0-dndnode_1"
+    }
+  ],
+  "viewport": { "x": -246, "y": 211, "zoom": 2 }
+}
