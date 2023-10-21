@@ -34,8 +34,7 @@ const initialNodes = [
   },
 ];
 
-let id = 0;
-const getId = () => `dndnode_${id++}`;
+
 const nodeTypes = {
   selectorNode: CustomNode,
   output: CustomNodeEnd,
@@ -59,6 +58,7 @@ const DnDFlow = () => {
   const [nodeSelected, setNodeSelected] = useState<any>(null);
   const [edgeSelected, setEdgeSelected] = useState<any>(null);
   const [code, setCode] = useState<any>(null);
+  const [id, setId] = useState<any>(null);
 
   const flowKey = "example-flow";
   const init = (element: ReactFlowProps) => {
@@ -94,14 +94,16 @@ const DnDFlow = () => {
         y: event.clientY - reactFlowBounds.top,
       });
       let label = `Editar texto haciendo click aqui`;
-      let id = getId();
+      let new_id = `dndnode_${id}`;
+      setId(id+1)
+
       if (type == "output") {
         label = "FIN";
-        id = "END";
+        new_id = "END";
       }
 
       const newNode = {
-        id: id,
+        id: new_id,
         type,
         position,
         data: { label: label, max_retries: 1, in_other_case: "" },
@@ -109,7 +111,7 @@ const DnDFlow = () => {
 
       setNodes((nds) => nds.concat(newNode));
     },
-    [reactFlowInstance]
+    [reactFlowInstance, id]
   );
 
   const onNodeClick = useCallback(
@@ -167,7 +169,7 @@ const DnDFlow = () => {
       setCode(JSON.stringify(flow));
       localStorage.setItem(flowKey, JSON.stringify(flow));
     }
-  }, [reactFlowInstance]);
+  }, [reactFlowInstance, flowName]);
 
   const handleDelete = (elementToDelete: string) => {
     console.log("delete", elementToDelete);
@@ -195,6 +197,8 @@ const DnDFlow = () => {
         const { x = 0, y = 0, zoom = 1 } = flow.viewport;
         setNodes(flow.nodes || []);
         setEdges(flow.edges || []);
+        setId(flow.nodes.length+1)
+
         //setViewport({ x, y, zoom });
       }
     };
