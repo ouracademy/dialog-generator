@@ -108,7 +108,7 @@ export default function MenuDrawer2({ children }: React.PropsWithChildren<{}>) {
       <CssBaseline />
       <AppBar
         position="fixed"
-        open={mobileOpen}
+       
         // sx={{
         //   width: { sm: `calc(100% - ${drawerWidth}px)` },
         //   ml: { sm: `${drawerWidth}px` },

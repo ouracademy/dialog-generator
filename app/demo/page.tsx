@@ -62,9 +62,9 @@ const DnDFlow = () => {
 
   const flowKey = "example-flow";
   const init = (element: ReactFlowProps) => {
-    setReactFlowInstance(element);
+    setReactFlowInstance(element!);
     console.log(element);
-    element.setViewport({ x: 0, y: 0, zoom: 1 });
+    //element.setViewport({ x: 0, y: 0, zoom: 1 });
   };
   const onConnect = useCallback((params: any) => {
     params["type"] = "buttonedge";
@@ -191,7 +191,7 @@ const DnDFlow = () => {
 
   const onRestore = useCallback(() => {
     const restoreFlow = async () => {
-      const flow = JSON.parse(localStorage.getItem(flowKey));
+      const flow = JSON.parse(localStorage.getItem(flowKey)!);
 
       if (flow) {
         const { x = 0, y = 0, zoom = 1 } = flow.viewport;
@@ -219,7 +219,7 @@ const DnDFlow = () => {
                   onNodesChange={onNodesChange}
                   onEdgesChange={onEdgesChange}
                   onConnect={onConnect}
-                  onInit={(element) => {
+                  onInit={(element:any) => {
                     init(element);
                   }}
                   onDrop={onDrop}
@@ -293,8 +293,8 @@ const DnDFlow = () => {
             readOnly
             name=""
             id=""
-            cols="25"
-            rows="30"
+            cols={25}
+            rows={30}
             value={code}
           ></textarea>
         </div>
